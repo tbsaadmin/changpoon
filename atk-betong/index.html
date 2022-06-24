@@ -1,1 +1,211 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>สำหรับ Upload ไฟล์</title>
+    <link rel="stylesheet"
+    href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+    <?!= include ('css') ?>
+    <?!= include ('DataTable') ?>
+</head>
+
+<body>
+    <main>
+        <div class="container py-3">
+            <header class="pb-3 mb-2 border-bottom" id="head">
+                <a class="d-flex align-items-center text-dark text-decoration-none">
+                    <i class="fas fa-notes-medical fa-2x me-2"></i><span class="fs-5"><b>ระบบ Upload ไฟล์ของสมาชิกชมรมช้างปูน SCG</b></span>
+                </a>
+            </header>
+
+            <div class="p-2 mb-2 bg-light  border rounded-3">
+                <div class="container-fluid">
+                    <h3 class="display-10 fw-bold">ชมรมช้างปูน SCG</h3>
+                    <p>สำหรับ Upload ไฟล์ผลตรวจ ATK ก่อน-หลัง (ถ้ามี) การร่วมกิจกรรมท่องเที่ยวเบตง</p>
+                    <p><b>คำแนะนำ:</b>
+                    <ol>                   
+                      <li>สมาชิกตรวจ ATK ก่อนเข้าร่วมกิจกรรมไม่เกิน 48 ชั่วโมง (หรือกรณีมีเหตุการณ์ที่จำเป็นต้องให้ตรวจ ATK หลังกิจกรรม เจ้าหน้าที่จะแจ้งให้ทราบภายหลัง)</li>                
+                      <li>ให้ถ่ายภาพผลการตรวจไว้ เพื่อ Upload ไฟล์เข้าระบบฯ ถ้ามีผู้ติดตามให้ถ่ายภาพรวมอยู่ในภาพเดียวกัน หรือใช้ App Image Combiner ทำการรวมไฟล์ให้เป็นไฟล์เดียวกันก่อน</li>
+                      <li>ระบบนี้สามารถ Upload ได้ครั้งละไม่เกิน 2 ไฟล์ จะเข้าไป Upload กี่ครั้งก็ได้ แต่ละครั้งต้องมีอย่างน้อย 1 ไฟล์เสมอ (ระบบจะเก็บไฟล์ล่าสุด 2 ไฟล์สุดท้ายไว้เสมอ)</li>  
+                      <li>เลือกชื่อของท่านในช่อง "ค้นหาด้วยชื่อผู้ร่วมกิจกรรม" แล้วกดปุ่ม "เข้าสู่ระบบ"</li>  
+                      <li>Upload ไฟล์รูปภาพอย่างน้อย 1 ภาพ แล้วกดปุ่ม "บันทึกข้อมูล" สามารถตรวจสอบผลการบันทึกได้จากหน้าจอด้านซ้าย</li>
+                      <li>ถ้าต้องการดูรายชื่อและผลการ Upload ไฟล์ ให้กดปุ่ม "ดูรายชื่อทั้งหมด" ถ้าต้องการคำแนะนำใดๆ กรุณาติดต่อ 094-565-2540 (พรเทพ)</li>                          
+                  </ol>   
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch">
+                <!--ฟอร์มค้นหาและแสดงข้อมูลที่หาพบทางด้านซ้าย-->
+                <div class="col-md-4" id="colsearch">
+                    <div class="h-100 p-2 bg-light border rounded-3">
+                        <h6><i class="fas fa-search"></i>ค้นหาด้วยชื่อผู้ร่วมกิจกรรม</h6>
+
+                        <form>
+                            <select id="id" name="id" class="js-example-basic-single form-select mb-3" required>
+                                <option disabled selected value="">เลือกชื่อของท่าน</option>
+                                <? var list = SpreadsheetApp.openById('1Vvvp0Siyra9-93gFMmB83h2bTMsloxgANnkDM8N0msw').getSheetByName('ชีต1').getRange('C:C').getDisplayValues() ?>
+                                <? list = [...list.slice(1).filter(r => r[0]!= '')] ?>
+                                <? list.forEach(datalist =>{ ?>
+                                <option value="<?= datalist[0] ?>">
+                                    <?= datalist[0] ?>
+                                    <? }) ?>
+                            </select>
+                                <button class="btn btn-dark" type="submit" id="bss" disabled style="display:none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </button>
+                        </form>
+
+                        <div id="output2"></div>
+
+                        <!--แสดงตารางข้อมูลที่หาพบทางด้านซ้ายล่าง-->                        
+                        <div class="container" id="coltb">
+                            <table id="tb" class="table table-striped table-responsive nowrap" style="width:100%"></table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--แบบฟอร์มแก้ไขข้อมูลที่หาพบ ทางด้านขวา-->
+                <div class="col-md-8" id="colform">
+                    <div class="h-100 p-2 bg-light border rounded-3">
+                        <h6><i class="fas fa-align-justify"></i> แบบฟอร์มสำหรับ Upload ไฟล์</h6>
+
+                        <form id="edit-pass" style="display: none;">
+                            <div class="row justify-content-center">
+                                <div class="col-12" style="display:none">
+                                    <label for="pass">กรุณาใส่ Password</label>
+                                    <input type="password" class="form-control" id="pass" name="pass" required>
+                                </div>
+                                <div class="col-12 mt-3">
+                                   <button class="btn btn-success" type="button" id="pass-btn">เข้าสู่ระบบ</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <form id="myForm" style="display:none">                            
+                            
+                            <div class="row ">
+                                <div class="col-md-12 col-12 mb-2">
+                                    <label style="color:red; font-size:14px" class="py-2">เลือกไฟล์รูปภาพอย่างน้อย 1 ภาพ (ไม่เกิน 2 ภาพ)</label>
+                                    <input type="file" class="form-control mb-2" id="file" multiple required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-12 mt-2 mt-md-0">
+                                    <div id="preview" class="row justify-content-center"></div>
+                                </div>
+                            </div>
+
+                      <!---------Section1--------->
+                      <!-- <section class="border rounded-3 p-3 text-light shadow" style="background: #34495E">  -->
+                      <section>                                          
+                      <div class="row justify-content-start align-items-end">  
+
+                      <div class="form-group col-md-4" style="display:none">
+                        <label for="myFullname">ชื่อและนามสกุล</label>
+                        <input type="text" class="form-control" id="myFullname" name="myFullname" readonly>
+                      </div>
+                      <div class="form-group col-md-4" style="display:none">
+                        <label for="Group">กลุ่ม</label>
+                        <input type="text" class="form-control" id="Group" name="Group" readonly>
+                      </div> 
+                      <div class="form-group col-md-4" style="display:none">
+                        <label for="Mphone">โทรศัพท์</label>
+                        <input type="text" class="form-control" id="Mphone" name="Mphone" readonly>
+                      </div> 
+
+                      </div>
+
+                      <div class="row justify-content-start align-items-end">
+
+                      <div class="form-group col-md-12" style="display:none">
+                        <label for="Fname">ผู้ติดตาม</label>
+                        <input type="text" class="form-control" id="Fname" name="Fname" readonly>
+                      </div>                      
+                      <div class="form-group col-md-12" style="display:none">
+                        <label for="myFile1">สลิปธนาคาร</label>
+                        <input type="text" class="form-control" id="myFile1" name="myFile1" readonly>
+                      </div>    
+                      <div class="form-group col-md-12" style="display:none">
+                        <label for="myFile2">บัตรประชาชน</label>
+                        <input type="text" class="form-control" id="myFile2" name="myFile2" readonly>
+                      </div>
+                      <div class="form-group col-md-12" style="display:none">
+                        <label for="myFile3">หมอพร้อม</label>
+                        <input type="text" class="form-control" id="myFile3" name="myFile3" readonly>
+                      </div>  
+                      <div class="form-group col-md-12">
+                        <label for="myEmname">ชื่อผู้ติดต่อกรณีฉุกเฉิน *</label>
+                        <input type="text" class="form-control" id="myEmname" name="myEmname" required>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <label for="myEmphone">โทรศัพท์กรณีฉุกเฉิน *</label>
+                        <input type="text" class="form-control" id="myEmphone" name="myEmphone" required>
+                      </div>              
+                             
+                    </div> 
+                    </section>  
+                    <div id="output" class="mb-3"></div>
+                       <button id="update" type="submit" class="btn btn-success"><i class="fas fa-edit"></i>บันทึกข้อมูล</button>
+                       <button class="btn btn-success" type="button" id="btnupdate" disabled style="display:none">
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          รอสักครู่..
+                       </button>       
+
+                    </form>
+                </div>
+            </div>
+          </div>
+           
+            <!--DataTable แสดงข้อมูลทั้งหมด-->
+            <div class="p-2 mt-3 bg-light rounded-3" id="pagedatatable" style="display:none">
+                <div class="container-fluid">
+                    <h5><i class="fas fa-user-circle"></i>รายชื่อผู้ร่วมกิจกรรมเที่ยวเบตง <b id="welcome" style="color:black;"></b></h5>
+                    <table id="data-table" class="display responsive nowrap" style="width:100%">
+                        <thead class="bg-success text-white"></thead>
+                    </table>
+                </div>
+            </div>
+            
+            <!--แบบฟอร์ม admin-->
+            <main class="col-md-6 text-center py-2" id="pageadmin" style="display:none">
+                <div class="h-100 p-2 bg-light border rounded-3">
+                    <form id="form2" onsubmit="sumitSignIn(this)">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="input1" style="text-align: center;" required>
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" name="input2" style="text-align: center;" required>
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-dark mb-3" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                        <span class="alert" id="output1"></span>
+                        <div class="spinner-border spinner-border-sm" id="spin1" role="status" style="display:none">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow spinner-grow-sm" id="spin2" role="status" style="display:none">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </form>
+                </div>
+            </main>
+
+            <button class="btn btn-outline-dark mt-2" id="btnadmin" onclick="admin()" type="button"><i class="fas fa-user-circle"></i> ดูรายชื่อทั้งหมด </button>
+            <button class="btn btn-outline-dark mt-2" onclick="closeform()" id="closeform" type="button" style="display:none"><i class="fas fa-times-circle"></i> ปิดหน้าจอ </button>
+
+            <!--back to top-->
+            <div class="container text-end">
+                <button class="btn btn-outline-back" onclick="backtop()" type="button"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+            </div>
+            <footer class="pt-3 mt-4 text-muted border-top">
+                &copy; 2022 กลุ่มกิจกรรมท่องเที่ยว ชมรมช้างปูน SCG
+            </footer>
+        </div> 
+    </main>
+    <?!= include ('js') ?>
+    <?!= include ('jsadmin') ?>
+</body>
+
+</html>

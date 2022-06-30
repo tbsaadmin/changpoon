@@ -55,11 +55,14 @@
     <!-- * Code html ของ Target Form เปลี่ยนได้เรื่อยๆ -->
     <!-- ! แต่ id และ name ของช่องต่างๆใน master-section ห้ามเปลี่ยน -->
     <div class="container-fluid">
+
         <form id="mainForm" class="needs-validation" novalidate>
             <div class="container my-4">
                 <!-- <section class="rounded-3 m-2 border border-2 shadow bg-light text-center">
                     <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;">
                 </section> -->
+
+                <!-- ส่วนที่ 1 master-section สำหรับดึงข้อมูลจาก Master Data มาแสดง -->
                 <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light" id="master-section">
                     <div class="row justify-content-start p-2">
                         <div class="col-md-6 mt-3">
@@ -67,15 +70,28 @@
                             <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อ-สมาชิก" required>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="บัตรประชาชน">หมายเลขบัตรประชาชน</label>
-                            <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="หมายเลขบัตรประชาชน">
+                            <label for="เลขสมาชิก">เลขสมาชิก</label>
+                            <input type="text" class="form-control" id="เลขสมาชิก" name="เลขสมาชิก" placeholder="เลขสมาชิก">
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="โทรศัพท์">เบอร์โทร</label>
                             <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร" required>
                         </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="บัตรประชาชน">เลขบัตรประชาชน 13 หลัก</label>
+                            <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน" required>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="อีเมล">อีเมล</label>
+                            <input type="text" class="form-control" id="อีเมล" name="อีเมล" placeholder="อีเมล" required>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="ไลน์ไอดี">Line ID</label>
+                            <input type="text" class="form-control" id="ไลน์ไอดี" name="ไลน์ไอดี" placeholder="ไลน์ไอดี" required>
+                        </div>
+                        
                         <div class="col-md-12 mt-3">
-                            การฉีดวัคซีน <br>
+                            ประวัติการฉีดวัคซีนของสมาชิก <br>
                             <div class="form-check form-check-inline mt-2">
                                 <input class="form-check-input" type="radio" value="เข็มที่ 1-2 แล้ว" name="การฉีดวัคซีน" id="vaccinated-1">
                                 <label class="form-check-label" for="vaccinated-1">
@@ -101,11 +117,17 @@
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-md-6 mt-3">
-                            <label for="ผู้ติดตาม">ผู้ติดตาม</label>
-                            <input type="text" class="form-control" id="ผู้ติดตาม" name="ผู้ติดตาม" placeholder="ผู้ติดตาม">
+                            <label for="ผู้ติดต่อฉุกเฉิน">ผู้ติดต่อฉุกเฉิน</label>
+                            <input type="text" class="form-control" id="ผู้ติดต่อฉุกเฉิน" name="ผู้ติดต่อฉุกเฉิน" placeholder="ผู้ติดต่อฉุกเฉิน" required>
                         </div>
-                        <div class="col-md-12 mt-3">
+                        <div class="col-md-6 mt-3">
+                            <label for="โทรศัพท์ฉุกเฉิน">โทรศัพท์ฉุกเฉิน</label>
+                            <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์ฉุกเฉิน" required>
+                        </div>
+
+                        <!-- <div class="col-md-12 mt-3">
                             การฉีดวัคซีน ผู้ติดตาม
                             <div class="form-check mt-2">
                                 <input class="form-check-input" type="radio" value="เข็มที่ 1-2 แล้ว" name="การฉีดวัคซีน ผู้ติดตาม" id="follower-vacinated-1">
@@ -131,7 +153,8 @@
                                     อื่นๆ
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
+
                         <div class="col-md-12 mt-3">
                             <label for="nation_id" class="old-nation">บัตรประชาชน</label>
                             <input type="file" class="form-control old-nation file" id="nation_id" name="nation_id" placeholder="URL บัตรประชาชน" required>
@@ -152,9 +175,12 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- ส่วนที่ 2 target-section สำหรับดึงข้อมูลจาก Target File มาแสดง -->
                 <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light" id="target-section">
                     <div class="row justify-content-start">
-                        <div class="col-md-6 mt-3">
+
+                        <!-- <div class="col-md-6 mt-3">
                             Radio 1
                             <div class="form-check mt-2">
                                 <input class="form-check-input" type="radio" value="กลุ่ม 1" name="Radio-1" id="Radio-1-1">
@@ -174,43 +200,48 @@
                                     อื่นๆ
                                 </label>
                             </div>
-                        </div>
-
+                        </div> -->
 
                         <div class="col-md-12 mt-3">
-                            Check <br>
+                            กลุ่มย่อยที่สนใจเข้าร่วม <br>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="x" id="Check-1" name="Check-1">
                                 <label class="form-check-label" for="Check-1">
-                                    Check 1
+                                    ใฝ่ธรรมะ
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="x" id="Check-2" name="Check-2">
                                 <label class="form-check-label" for="Check-2">
-                                    Check 2
+                                    กีฬา
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="x" id="Check-3" name="Check-3">
                                 <label class="form-check-label" for="Check-3">
-                                    Check 3
+                                    ท่องเที่ยว
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="x" id="Check-4" name="Check-4">
+                                <label class="form-check-label" for="Check-4">
+                                    เพื่อสังคม
                                 </label>
                             </div>
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="slip" class="old-slip">สลิปธนาคาร</label>
-                            <input type="file" class="form-control old-slip file" id="slip" name="slip" placeholder="URL บัตรประชาชน" required>
-                            <button class="btn btn-warning" type="button" id="slip-change" style="display: none;">เปลี่ยนรูปสลิปธนาคาร</button>
+                            <label for="slip" class="old-slip">รูปภาพ 1</label>
+                            <input type="file" class="form-control old-slip file" id="slip" name="slip" placeholder="URL รูปภาพ 1" required>
+                            <button class="btn btn-warning" type="button" id="slip-change" style="display: none;">เปลี่ยนรูปภาพ 1</button>
                         </div>
                         <div class="col-md-12 text-center">
                             <img id="slip_preview" class="img-fluid mt-2 rounded" style="display: none;">
                         </div>
                         <div class="col-md-12 mt-3">
-                            <label for="slip2" class="old-slip2">สลิปธนาคาร 2</label>
-                            <input type="file" class="form-control old-slip2 file" id="slip2" name="slip2" placeholder="URL บัตรประชาชน" required>
-                            <button class="btn btn-warning" type="button" id="slip2-change" style="display: none;">เปลี่ยนรูปสลิปธนาคาร</button>
+                            <label for="slip2" class="old-slip2">รูปภาพ 2</label>
+                            <input type="file" class="form-control old-slip2 file" id="slip2" name="slip2" placeholder="URL รูปภาพ 2" required>
+                            <button class="btn btn-warning" type="button" id="slip2-change" style="display: none;">เปลี่ยนรูปภาพ 2</button>
                         </div>
                         <div class="col-md-12 text-center">
                             <img id="slip2_preview" class="img-fluid mt-2 rounded" style="display: none;">
@@ -218,12 +249,15 @@
                         <div class="col-md-12 text-center mt-4">
                             <button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
                         </div>
+
                         <input type="text" value="" id="ยอมรับ PDPA" name="ยอมรับ PDPA" hidden>
                     </div>
                 </section>
+
             </div>
         </form>
     </div>
+
     <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-dialog">
@@ -231,34 +265,36 @@
                     <div class="modal-header bg-warning text-dark">
                         <h5 class="modal-title">ข้อตกลงการใช้งานระบบ</h5>
                     </div>
+
                     <div class="modal-body">
                         &emsp;&emsp;&emsp;&emsp;<strong>ข้อตกลงการใช้งานระบบ</strong>
-                        ข้าพเจ้า<strong>ยินยอม</strong>ในการ ให้สมาคมนักศึกษาเก่าพาณิชยศาสตร์และการบัญชี มหาวิทยาลัยธรรมศาสตร์ (ส.พ.บ.ธ.) <strong>เปิดเผยข้อมูลส่วนบุคคล</strong>ของข้าพเจ้า ให้<strong>สมาคมฯ</strong>
-                        หรือ<strong>พันธมิตรของสมาคมฯ</strong> เพื่อนำไปใช้ในการวิเคราะห์
-                        คัดสรรและนำเสนอผลิตภัณฑ์หรือบริการ กิจกรรมต่าง ๆ สิทธิประโยชน์
-                        รายการส่งเสริมการขาย หรือข้อเสนอต่าง ๆ ของสมาคมฯ หรือพันธมิตรนั้น
+                        ข้าพเจ้า<strong>ยินยอม</strong>ในการ ให้ชมรมช้างปูน SCG <strong>เปิดเผยข้อมูลส่วนบุคคล</strong>ของข้าพเจ้า เพื่ออนุญาตให้<strong>ชมรมช้างปูน</strong>
+                        หรือ<strong>พันธมิตรของชมรมฯ</strong> เพื่อนำข้อมูลของข้าพเจ้า ไปใช้ในการดำเนินการจัดทำกิจกรรมต่าง ๆ สำหรับสมาชิกนั้น
                         <br><br>
-                        &emsp;&emsp;&emsp;&emsp;ทั้งนี้ ก่อนการแสดงเจตนา <strong>ข้าพเจ้าได้อ่านรายละเอียดจากเอกสารชี้แจงข้อมูล</strong> หรือได้รับคำอธิบายจาก ส.พ.บ.ธ. ถึงวัตถุประสงค์ในการเก็บรวบรวม ใช้หรือเปิดเผย (“ประมวลผล”) ข้อมูลส่วนบุคคล
+                        &emsp;&emsp;&emsp;&emsp;ทั้งนี้ ก่อนการแสดงเจตนา <strong>ข้าพเจ้าได้อ่านรายละเอียดจากเอกสารชี้แจงข้อมูล</strong> หรือได้รับคำอธิบายจากชมรมช้างปูน ถึงวัตถุประสงค์ในการเก็บรวบรวม ใช้หรือเปิดเผยหรือประมวลผล ข้อมูลส่วนบุคคล
                         และ<strong>มีความเข้าใจดีแล้ว</strong>
                         ข้าพเจ้าให้ความยินยอมหรือปฏิเสธไม่ให้ความยินยอมในเอกสารนี้ด้วยความสมัครใจ ปราศจากการบังคับหรือชักจูง และข้าพเจ้าทราบว่าข้าพเจ้าสามารถ<strong>ถอนความยินยอมนี้เสียเมื่อใดก็ได้</strong>
-                        เว้นแต่ในกรณีมีข้อจำกัดสิทธิตามกฎหมายหรือยังมีสัญญาระหว่างข้าพเจ้ากับ ส.พ.บ.ธ ที่ให้ประโยชน์แก่ข้าพเจ้าอยู่
+                        เว้นแต่ในกรณีมีข้อจำกัดสิทธิตามกฎหมายหรือยังมีสัญญาระหว่างข้าพเจ้ากับชมรมช้างปูน ที่ให้ประโยชน์แก่ข้าพเจ้าอยู่
                         <br><br>
-                        &emsp;&emsp;&emsp;&emsp;กรณีที่ข้าพเจ้าประสงค์จะขอถอนความยินยอม ข้าพเจ้าทราบว่าการถอนความยินยอมจะมีผลทำให้ ข้าพเจ้าอาจได้รับ<strong>ความสะดวกในการใช้บริการน้อยลง</strong> หรือ
+                        &emsp;&emsp;&emsp;&emsp;กรณีที่ข้าพเจ้าประสงค์จะขอถอนความยินยอม ข้าพเจ้าทราบว่าการถอนความยินยอมจะมีผลทำให้ ข้าพเจ้าอาจจะได้รับ<strong>ความสะดวกในการใช้บริการน้อยลง</strong> หรือ
                         <strong>ไม่สามารถเข้าถึงฟังก์ชันการใช้งานบางอย่าง</strong>ได้
                         และข้าพเจ้าทราบว่าการถอนความยินยอมดังกล่าว
-                        <strong>ไม่มีผลกระทบต่อการประมวลผลข้อมูล</strong>ส่วนบุคคลที่ได้ดำเนินการเสร็จสิ้นไปแล้วก่อนการถอนความยินยอม
+                        <strong>ไม่มีผลกระทบต่อการประมวลผลข้อมูล</strong>ส่วนบุคคลที่ได้ดำเนินการเสร็จสิ้นไปแล้ว ก่อนการถอนความยินยอม
                         </p>
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" id="accept-btn" class="btn btn-primary">Accept</button>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+
     <script>
-        const master_script_url = 'https://script.google.com/macros/s/AKfycbyVKcZuDXkHexslx9k4vDuGjrt1eMdg80zgC7y_KvOa2cdmssODpBg1Zu0uzZQsJo4/exec'
-        const script_url = 'https://script.google.com/macros/s/AKfycbxyQYWMiAgV0H8LqGOTBIUHOPvX_8umDQPdLPUBOqVGQeRetCwyKehuLhJ-bYHQabcY/exec'
+        const master_script_url = 'https://script.google.com/macros/s/AKfycbxOXzgme0wFXAc0WWBQlBoiAWjgxkUSx4Pgy4IzdNCPdh5mYf6TaKJsB8iTYtuF-o03/exec'
+        const script_url = 'https://script.google.com/macros/s/AKfycbz2aUHaUGlhLdLG3iE4FQ6slCMzgof-SdX-KNab_znGLs-wd4k6gkAUpdnLGl36owvO/exec'
         var names, pdpa = false
         $(document).ready(function () {
             $.LoadingOverlay("show", {

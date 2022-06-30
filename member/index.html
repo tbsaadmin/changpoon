@@ -446,13 +446,13 @@
                     $('#nation_id').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
                     return $('#nation_id_preview').attr('src', data[key].thumbnail).show();
                 }
-                if (key == 'URL สลิปธนาคาร') {
+                if (key == 'URL รูปภาพ1') {
                     $('.old-slip').hide()
                     $('#slip-change').show()
                     $('#slip').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
                     return $('#slip_preview').attr('src', data[key].thumbnail).show();
                 }
-                if (key == 'URL สลิปธนาคาร 2') {
+                if (key == 'URL รูปภาพ2') {
                     $('.old-slip2').hide()
                     $('#slip2-change').show()
                     $('#slip2').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
@@ -537,15 +537,15 @@
                     $('#nation_id_preview').attr('src', e.target.result).slideDown(500)
                 } 
                 else if(id == 'slip') {
-                    files['URL สลิปธนาคาร'] = {}
-                    files['URL สลิปธนาคาร'].data = e.target.result;
-                    files['URL สลิปธนาคาร'].name = file.name;
+                    files['URL รูปภาพ1'] = {}
+                    files['URL รูปภาพ1'].data = e.target.result;
+                    files['URL รูปภาพ1'].name = file.name;
                     $('#slip_preview').attr('src', e.target.result).slideDown(500)
                 }
                 else if(id == 'slip2') {
-                    files['URL สลิปธนาคาร 2'] = {}
-                    files['URL สลิปธนาคาร 2'].data = e.target.result;
-                    files['URL สลิปธนาคาร 2'].name = file.name;
+                    files['URL รูปภาพ2'] = {}
+                    files['URL รูปภาพ2'].data = e.target.result;
+                    files['URL รูปภาพ2'].name = file.name;
                     $('#slip2_preview').attr('src', e.target.result).slideDown(500)
                 }
             }

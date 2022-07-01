@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ล่าสุดวันที่ 01-07-2565 เวลา 0830 -->
+<!-- ล่าสุดวันที่ 01-07-2565 เวลา 1730 -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,14 +42,14 @@
 
         body.swal2-shown>[aria-hidden="true"] {
             transition: 0.1s filter;
-            filter: blur(15px);
+            filter: blur(0px);
         }
 
         .blur {
-            filter: blur(15px);
+            filter: blur(0px);
         }
     </style>
-    <title>Document</title>
+    <title>สมาชิกชมรมช้างปูน</title>
 </head>
 
 <body>
@@ -64,7 +64,7 @@
                   <p class="card-text mali text-primary text-center"><b>วัตถุประสงค์ของการขอข้อมูลส่วนบุคคลของสมาชิกชมรมช้างปูน SCG</b></p>             
                   <ol>              
                     <li>ชื่อและนามสกุล เพื่อระบุตัวตนของสมาชิก</li>
-                    <li>เลขบัตรประชาชน 13 หลัก หรือภาพบัตรประชาชน เพื่อใช้ซื้อตั๋วเครื่องบิน การทำประกัน</li> 
+                    <li>เลขบัตรประชาชน 13 หลัก หรือภาพบัตรประชาชน เพื่อใช้ซื้อตั๋วเครื่องบิน การทำประกัน การฉีดวัคซีน</li> 
                     <li>หมายเลขโทรศัพท์ต่างๆ เพื่อใช้ติดต่อแจ้งข่าวสาร เช่น SMS และใช้ติดต่อในกรณีฉุกเฉิน</li>
                     <li>อีเมล ไลน์ไอดี เพื่อเป็นช่องทางในการส่งข้อมูลข่าวสาร</li> 
                     <li>ที่อยู่ เพื่อใช้ในการติดต่อส่งเอกสารหรือพัสดุ</li>   
@@ -80,8 +80,8 @@
                 <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light" id="master-section">
                     <div class="row justify-content-start p-2">
                         <div class="col-md-6 mt-3">
-                            <label for="ชื่อและนามสกุล">ชื่อ-สมาชิก *</label>
-                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อ-สมาชิก" required>
+                            <label for="ชื่อและนามสกุล">ชื่อและนามสกุลสมาชิก *</label>
+                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อและนามสกุลของสมาชิก" required>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="เลขสมาชิก">เลขสมาชิก</label>
@@ -89,15 +89,24 @@
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="โทรศัพท์">เบอร์โทร *</label>
-                            <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร" required>
+                            <!-- <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร" required> -->
+                            <input type="text" inputmode="tel" class="form-control" name="โทรศัพท์"
+                                pattern="^0([689]\d{8}$|[2]\d{7}$)" id="โทรศัพท์" placeholder="เบอร์โทร" required>
+							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายไม่ต้องมี - คั่น</div>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="บัตรประชาชน">เลขบัตรประชาชน *</label>
-                            <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน 13 หลัก" required>
+                            <!-- <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน 13 หลัก" required> -->
+                            <input type="text" inputmode="numeric" class="form-control need-cert" name="บัตรประชาชน" 
+                                pattern="[0-9]{13}" id="บัตรประชาชน"   placeholder="เลขบัตรประชาชน 13 หลัก" required>
+							              <div class="invalid-feedback">ใส่เลขบัตรประชาชน/เลขที่ผู้เสียภาษี</div>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="อีเมล">อีเมล</label>
-                            <input type="text" class="form-control" id="อีเมล" name="อีเมล" placeholder="อีเมลแอดเดรส">
+                            <!-- <input type="text" class="form-control" id="อีเมล" name="อีเมล" placeholder="อีเมลแอดเดรส"> -->
+                            <input type="email" inputmode="email" class="form-control" name="อีเมล"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3}$" id="อีเมล" placeholder="อีเมลแอดเดรส">
+							              <div class="invalid-feedback">ใส่อีเมลให้ถูกต้อง มี @ ด้วย</div>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="ไลน์ไอดี">ไลน์ไอดี</label>
@@ -137,7 +146,10 @@
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="โทรศัพท์ฉุกเฉิน">เบอร์โทรกรณีฉุกเฉิน</label>
-                            <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์กรณีฉุกเฉิน">
+                            <!-- <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์กรณีฉุกเฉิน"> -->
+                            <input type="text" inputmode="tel" class="form-control" name="โทรศัพท์ฉุกเฉิน"
+                                pattern="^0([689]\d{8}$|[2]\d{7}$)" id="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์ฉุกเฉิน" required>
+							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายไม่ต้องมี - คั่น</div>
                         </div>
 
                         <!-- <div class="col-md-12 mt-3">

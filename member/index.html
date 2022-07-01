@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- ล่าสุดวันที่ 01-07-2565 เวลา 0830 -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: linear-gradient(to right top, #7a11f7, #7e11f9, #8111fa, #8511fc, #8811fd, #8c11fe, #9110fe, #9510ff, #9b10ff, #a110ff, #a610ff, #ac10ff);
+            /* background-image: linear-gradient(to right top, #7a11f7, #7e11f9, #8111fa, #8511fc, #8811fd, #8c11fe, #9110fe, #9510ff, #9b10ff, #a110ff, #a610ff, #ac10ff); */
+            background-image: linear-gradient(to top, #090066, #13157d, #1a2894, #1f3bab, #234ec3, #3f4dbf, #514dbc, #5f4db8, #6b3a97, #6c2778, #65175b, #5a0841);
         }
 
         .select2-container--open {
@@ -60,23 +61,24 @@
                 <section class="rounded-3 m-2 border border-2 shadow bg-light text-center">
                     <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;">
                 </section>
+                
                 <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light" id="master-section">
                     <div class="row justify-content-start p-2">
                         <div class="col-md-6 mt-3">
-                            <label for="ชื่อและนามสกุล">ชื่อ-สมาชิก</label>
-                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อ-สมาชิก" readonly>
+                            <label for="ชื่อและนามสกุล">ชื่อ-สมาชิก *</label>
+                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อ-สมาชิก" required>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="เลขสมาชิก">เลขสมาชิก</label>
                             <input type="text" class="form-control" id="เลขสมาชิก" name="เลขสมาชิก" placeholder="เลขสมาชิก" readonly>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="โทรศัพท์">เบอร์โทร</label>
-                            <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร">
+                            <label for="โทรศัพท์">เบอร์โทร *</label>
+                            <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร" required>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="บัตรประชาชน">เลขบัตรประชาชน</label>
-                            <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน 13 หลัก">
+                            <label for="บัตรประชาชน">เลขบัตรประชาชน *</label>
+                            <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน 13 หลัก" required>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="อีเมล">อีเมล</label>
@@ -115,12 +117,12 @@
                             </div>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="ผู้ติดต่อฉุกเฉิน">ผู้ติดต่อฉุกเฉิน</label>
-                            <input type="text" class="form-control" id="ผู้ติดต่อฉุกเฉิน" name="ผู้ติดต่อฉุกเฉิน" placeholder="ผู้ติดต่อฉุกเฉิน">
+                            <label for="ผู้ติดต่อฉุกเฉิน">ผู้ติดต่อกรณีฉุกเฉิน</label>
+                            <input type="text" class="form-control" id="ผู้ติดต่อฉุกเฉิน" name="ผู้ติดต่อฉุกเฉิน" placeholder="ผู้ติดต่อกรณีฉุกเฉิน">
                         </div>
                         <div class="col-md-6 mt-3">
-                            <label for="โทรศัพท์ฉุกเฉิน">เบอร์โทร</label>
-                            <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์ฉุกเฉิน">
+                            <label for="โทรศัพท์ฉุกเฉิน">เบอร์โทรกรณีฉุกเฉิน</label>
+                            <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์กรณีฉุกเฉิน">
                         </div>
 
                         <!-- <div class="col-md-12 mt-3">
@@ -151,14 +153,6 @@
                             </div>
                         </div> -->
 
-                        <div class="col-md-12 mt-3">
-                            <label for="nation_id" class="old-nation">บัตรประชาชน</label>
-                            <input type="file" class="form-control old-nation file" id="nation_id" name="nation_id" placeholder="URL บัตรประชาชน" required>
-                            <button class="btn btn-warning" type="button" id="nation-id-change" style="display: none;">เปลี่ยนรูปบัตรประชาชน</button>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <img id="nation_id_preview" class="img-fluid mt-2 rounded" style="display: none;">
-                        </div>
                         <div class="col-md-6 mt-2 edit-pass">
                             <button type="button" class="btn btn-success" id="change-pass-btn">เปลี่ยนรหัสผ่าน</button>
                         </div>
@@ -169,6 +163,16 @@
                                 กรุณาใส่รหัสผ่าน
                             </div>
                         </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="nation_id" class="old-nation">บัตรประชาชน</label>
+                            <input type="file" class="form-control old-nation file" id="nation_id" name="nation_id" placeholder="URL บัตรประชาชน" required>
+                            <button class="btn btn-warning" type="button" id="nation-id-change" style="display: none;">เปลี่ยนรูปบัตรประชาชน</button>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <img id="nation_id_preview" class="img-fluid mt-2 rounded" style="display: none;">
+                        </div>
+                        
                     </div>
                 </section>
 
@@ -260,7 +264,7 @@
                     <div class="modal-body">
                         &emsp;&emsp;&emsp;&emsp;<strong>ข้อตกลงการใช้งานระบบ</strong>
                         ข้าพเจ้า<strong>ยินยอม</strong> ให้ชมรมช้างปูน SCG <strong> เปิดเผยข้อมูลส่วนบุคคล</strong>ของข้าพเจ้า เพื่ออนุญาตให้<strong>ชมรมช้างปูน</strong>
-                        หรือ<strong>พันธมิตรของชมรมฯ</strong> เพื่อนำข้อมูลของข้าพเจ้า ไปใช้ในการดำเนินการ จัดทำกิจกรรมต่าง ๆ สำหรับสมาชิกของชมรมฯ
+                        หรือ<strong>พันธมิตรของชมรมฯ</strong> เพื่อนำข้อมูลของข้าพเจ้า ไปใช้ดำเนินการจัดทำกิจกรรมต่าง ๆ สำหรับสมาชิกของชมรมฯ
                         <br><br>
                         &emsp;&emsp;&emsp;&emsp;ทั้งนี้ ก่อนการแสดงเจตนา <strong>ข้าพเจ้าได้อ่านรายละเอียดจากเอกสารชี้แจงข้อมูล</strong> หรือได้รับคำอธิบายจากชมรมช้างปูน ถึงวัตถุประสงค์ในการเก็บรวบรวม การใช้ การเปิดเผย หรือการประมวลผลข้อมูลส่วนบุคคล
                         และข้าพเจ้า <strong>มีความเข้าใจดีแล้ว</strong>
@@ -434,13 +438,13 @@
                     $('#nation_id').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
                     return $('#nation_id_preview').attr('src', data[key].thumbnail).show();
                 }
-                if (key == 'URL สลิปธนาคาร') {
+                if (key == 'URL รูปภาพ1') {
                     $('.old-slip').hide()
                     $('#slip-change').show()
                     $('#slip').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
                     return $('#slip_preview').attr('src', data[key].thumbnail).show();
                 }
-                if (key == 'URL สลิปธนาคาร 2') {
+                if (key == 'URL รูปภาพ2') {
                     $('.old-slip2').hide()
                     $('#slip2-change').show()
                     $('#slip2').removeAttr('required').after(`<input id="${key}" name="${key}" value="${data[key].url}" hidden>`)
@@ -525,15 +529,15 @@
                     $('#nation_id_preview').attr('src', e.target.result).slideDown(500)
                 } 
                 else if(id == 'slip') {
-                    files['URL สลิปธนาคาร'] = {}
-                    files['URL สลิปธนาคาร'].data = e.target.result;
-                    files['URL สลิปธนาคาร'].name = file.name;
+                    files['URL รูปภาพ1'] = {}
+                    files['URL รูปภาพ1'].data = e.target.result;
+                    files['URL รูปภาพ1'].name = file.name;
                     $('#slip_preview').attr('src', e.target.result).slideDown(500)
                 }
                 else if(id == 'slip2') {
-                    files['URL สลิปธนาคาร 2'] = {}
-                    files['URL สลิปธนาคาร 2'].data = e.target.result;
-                    files['URL สลิปธนาคาร 2'].name = file.name;
+                    files['URL รูปภาพ2'] = {}
+                    files['URL รูปภาพ2'].data = e.target.result;
+                    files['URL รูปภาพ2'].name = file.name;
                     $('#slip2_preview').attr('src', e.target.result).slideDown(500)
                 }
             }

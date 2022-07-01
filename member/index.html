@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ล่าสุดวันที่ 01-07-2565 เวลา 1730 -->
+<!-- ล่าสุดวันที่ 01-07-2565 เวลา 1830 -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,6 +79,7 @@
 
                 <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light" id="master-section">
                     <div class="row justify-content-start p-2">
+                      <p class="card-text mali text-primary">กรุณากรอกหรือแก้ไขข้อมูลที่ถูกต้องในแบบฟอร์ม</p>  
                         <div class="col-md-6 mt-3">
                             <label for="ชื่อและนามสกุล">ชื่อและนามสกุลสมาชิก *</label>
                             <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อและนามสกุลของสมาชิก" required>
@@ -92,14 +93,14 @@
                             <!-- <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" placeholder="เบอร์โทร" required> -->
                             <input type="text" inputmode="tel" class="form-control" name="โทรศัพท์"
                                 pattern="^0([689]\d{8}$|[2]\d{7}$)" id="โทรศัพท์" placeholder="เบอร์โทร" required>
-							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายไม่ต้องมี - คั่น</div>
+							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายที่ถูกต้อง ไม่มี - คั่น</div>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="บัตรประชาชน">เลขบัตรประชาชน *</label>
                             <!-- <input type="text" class="form-control" id="บัตรประชาชน" name="บัตรประชาชน" placeholder="เลขบัตรประชาชน 13 หลัก" required> -->
                             <input type="text" inputmode="numeric" class="form-control need-cert" name="บัตรประชาชน" 
                                 pattern="[0-9]{13}" id="บัตรประชาชน"   placeholder="เลขบัตรประชาชน 13 หลัก" required>
-							              <div class="invalid-feedback">ใส่เลขบัตรประชาชน/เลขที่ผู้เสียภาษี</div>
+							              <div class="invalid-feedback">ใส่เลขบัตรประชาชน 13 หลัก</div>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="อีเมล">อีเมล</label>
@@ -149,7 +150,7 @@
                             <!-- <input type="text" class="form-control" id="โทรศัพท์ฉุกเฉิน" name="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์กรณีฉุกเฉิน"> -->
                             <input type="text" inputmode="tel" class="form-control" name="โทรศัพท์ฉุกเฉิน"
                                 pattern="^0([689]\d{8}$|[2]\d{7}$)" id="โทรศัพท์ฉุกเฉิน" placeholder="โทรศัพท์ฉุกเฉิน" required>
-							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายไม่ต้องมี - คั่น</div>
+							              <div class="invalid-feedback">ใส่เฉพาะเลขหมายที่ถูกต้อง ไม่มี - คั่น</div>
                         </div>
 
                         <!-- <div class="col-md-12 mt-3">

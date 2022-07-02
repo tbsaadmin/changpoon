@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ล่าสุดวันที่ 01-07-2565 เวลา 1830 -->
+<!-- ล่าสุดวันที่ 02-07-2565 เวลา 0830 -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,7 +82,7 @@
                       <p class="card-text mali text-primary">กรุณากรอกหรือแก้ไขข้อมูลที่ถูกต้องในแบบฟอร์ม</p>  
                         <div class="col-md-6 mt-3">
                             <label for="ชื่อและนามสกุล">ชื่อและนามสกุลสมาชิก *</label>
-                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อและนามสกุลของสมาชิก" required>
+                            <input type="text" class="form-control" id="ชื่อและนามสกุล" name="ชื่อและนามสกุล" placeholder="ชื่อและนามสกุลของสมาชิก" readonly required>
                         </div>
                         <div class="col-md-6 mt-3">
                             <label for="เลขสมาชิก">เลขสมาชิก</label>
@@ -193,7 +193,7 @@
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="nation_id" class="old-nation">บัตรประชาชน</label>
+                            <label for="nation_id" class="old-nation">บัตรประชาชน *</label>
                             <input type="file" class="form-control old-nation file" id="nation_id" name="nation_id" placeholder="URL บัตรประชาชน" required>
                             <button class="btn btn-warning" type="button" id="nation-id-change" style="display: none;">เปลี่ยนรูปบัตรประชาชน</button>
                         </div>
@@ -259,7 +259,7 @@
 
                         <div class="col-md-12 mt-3">
                             <label for="slip" class="old-slip">รูปภาพ-1</label>
-                            <input type="file" class="form-control old-slip file" id="slip" name="slip" placeholder="รูปภาพ-1" required>
+                            <input type="file" class="form-control old-slip file" id="slip" name="slip" placeholder="รูปภาพ-1">
                             <button class="btn btn-warning" type="button" id="slip-change" style="display: none;">เปลี่ยนรูปภาพ-1</button>
                         </div>
                         <div class="col-md-12 text-center">
@@ -267,7 +267,7 @@
                         </div>
                         <div class="col-md-12 mt-3">
                             <label for="slip2" class="old-slip2">รูปภาพ-2</label>
-                            <input type="file" class="form-control old-slip2 file" id="slip2" name="slip2" placeholder="Uรูปภาพ-2" required>
+                            <input type="file" class="form-control old-slip2 file" id="slip2" name="slip2" placeholder="Uรูปภาพ-2">
                             <button class="btn btn-warning" type="button" id="slip2-change" style="display: none;">เปลี่ยนรูปภาพ-2</button>
                         </div>
                         <div class="col-md-12 text-center">
@@ -404,7 +404,7 @@
             if (namechoose) {
                 console.log("🚀 ~ namechoose", namechoose)
                 if (namechoose == 'อื่นๆ') {
-                    $('#ชื่อและนามสกุล').focus();
+                    $('#ชื่อและนามสกุล').removeAttr('readonly').focus();
                     $('.edit-pass').toggle()
                     $('#รหัสผ่าน').attr('required', true).attr('disabled', false)
                     showPDPA()
@@ -454,6 +454,7 @@
         }
         function setData(data) {
             console.log("🚀 ~ data", data)
+             $('#ชื่อและนามสกุล').addAttr('readonly',true)
             if (!data['ยอมรับ PDPA'] || data['ยอมรับ PDPA'] != 'Accept') {
                 showPDPA()
             }

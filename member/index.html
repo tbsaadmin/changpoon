@@ -454,7 +454,7 @@
         }
         function setData(data) {
             console.log("🚀 ~ data", data)
-             $('#ชื่อและนามสกุล').addAttr('readonly',true)
+             $('#ชื่อและนามสกุล').prop('readonly',true)
             if (!data['ยอมรับ PDPA'] || data['ยอมรับ PDPA'] != 'Accept') {
                 showPDPA()
             }
